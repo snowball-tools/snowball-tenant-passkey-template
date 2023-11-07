@@ -1,22 +1,13 @@
-import type {
-  GetServerSideProps,
-  InferGetServerSidePropsType,
-  NextPage,
-} from "next";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-const Home: NextPage = ({
-  host,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <div>Hello from {host}</div>;
-};
+const Home = () => {
+  const router = useRouter();
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  console.log(ctx.req.headers.host);
-  return {
-    props: {
-      host: ctx.req.headers.host,
-    },
-  };
+  useEffect(() => {
+    // add authentification / session logic here
+    router.replace("/login");
+  }, [router]);
 };
 
 export default Home;

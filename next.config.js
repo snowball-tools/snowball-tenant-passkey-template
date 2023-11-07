@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const webpack = require("webpack");
+
 const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
@@ -8,6 +10,14 @@ const nextConfig = {
         destination: "/api/apple-app-site-association",
       },
     ];
+  },
+  webpack: (config, options) => {
+    config.plugins.push(
+      new webpack.NormalModuleReplacementPlugin(/^node:/, (resource) => {
+        resource.request = resource.request.replace(/^node:/, "");
+      })
+    );
+    return config;
   },
 };
 
