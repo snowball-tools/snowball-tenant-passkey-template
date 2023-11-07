@@ -14,29 +14,6 @@ export interface AuthButtonProps {
 
 export default function AuthButton({ type, onClick }: AuthButtonProps) {
   const [loading, setLoading] = useState(false);
-  const [isAuth, setIsAuth] = useState(false);
-
-  // async function authAction() {
-  //   setLoading(true);
-  //   try {
-  //     switch (type) {
-  //       case AuthButtonType.Login:
-  //         await snowball.authenticate();
-  //         const user = await snowball.getAddress();
-  //         onAuth(user);
-  //         setLoading(false);
-  //         break;
-  //       case AuthButtonType.Register:
-  //         await snowball.register("snowball dashboard");
-  //         setLoading(false);
-  //         break;
-  //     }
-  //     setIsAuth(true);
-  //   } catch (error) {
-  //     toast.error(`Error: ${JSON.stringify(error)}`);
-  //     setLoading(false);
-  //   }
-  // }
 
   return (
     <button
